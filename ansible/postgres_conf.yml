@@ -1,0 +1,14 @@
+- hosts: postgres
+  become: yes
+  vars:
+    manage_lvm: true
+    apps_dir: "/opt"
+    data_dir: "/data"
+  vars_files:
+    - lvm_vars.yml
+    - postgres_vars.yml
+  roles:
+    - init
+    - mrlesmithjr.manage-lvm
+    - geerlingguy.docker
+    - postgres

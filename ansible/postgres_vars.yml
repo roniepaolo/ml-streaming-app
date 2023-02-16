@@ -1,0 +1,5 @@
+app_src: "../postgres"
+pg_config_src: "../postgres/pg-config"
+
+app_dir: "/opt/postgres"
+pg_data_dir: "/data/postgres"
