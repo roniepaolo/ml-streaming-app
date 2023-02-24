@@ -2,15 +2,16 @@ version: '2'
 
 services:
   postgres:
-    image: postgres:12.1-alpine
+    image: postgres:15.2-alpine
     command: >-
       postgres
       -c config_file=/etc/pg-config/postgresql.conf
       -c hba_file=/etc/pg-config/pg_hba.conf
     volumes:
       - ./pg-config:/etc/pg-config
-      - ./data/postgres:/var/lib/postgresql/data/pgdata
+      - /data/postgres:/var/lib/postgresql/data/pgdata
       - ./.secrets:/run/secrets
+      - ./.keys:/etc/ssl/keys
     ports:
       - 5432:5432
     environment:

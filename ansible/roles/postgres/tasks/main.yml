@@ -8,6 +8,16 @@
     - "{{ app_dir }}"
     - "{{ pg_data_dir }}"
 
+- name: Create secrets directories if it does not exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: 70
+    group: 70
+  loop:
+    - "{{ keys_dir }}"
+    - "{{ secrets_dir }}"
+
 - name: Find Schema Registry deployment files (docker-compose)
   become: yes
   find:
