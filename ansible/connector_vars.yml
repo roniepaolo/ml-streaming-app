@@ -1,0 +1,3 @@
+connector_src: "../app/connector"
+connector_dir: "/opt/connector"
+

@@ -1,0 +1,63 @@
+- name: Create a directory if it does not exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: ubuntu
+    group: ubuntu
+  loop:
+    - "{{ connector_dir }}"
+
+- name: Find docker-compose files
+  become: yes
+  find:
+    paths: "{{ connector_src }}"
+    hidden: yes
+    use_regex: yes
+    patterns: .*\.(yml|yaml|txt)$
+  delegate_to: localhost
+  register: dc_files
+
+- name: Push docker-compose files
+  copy:
+    src: "{{ item.path }}"
+    dest: "{{ connector_dir }}/"
+    owner: ubuntu
+    group: ubuntu
+  with_items:
+    - "{{ dc_files.files }}"
+
+- name: Push docker files
+  copy:
+    src: "{{ connector_src }}/img-build"
+    dest: "{{ connector_dir }}/img-build"
+    owner: ubuntu
+    group: ubuntu
+
+- name: Find deployment files
+  become: yes
+  find:
+    paths: "{{ connector_src }}/src"
+    hidden: yes
+    use_regex: yes
+    excludes: .*j2$
+  delegate_to: localhost
+  register: target_files
+
+- name: Push deployment files
+  copy:
+    src: "{{ item.path }}"
+    dest: "{{ connector_dir }}/src/"
+    owner: ubuntu
+    group: ubuntu
+  with_items:
+    - "{{ target_files.files }}"
+
+- name: Push connector files (templates)
+  template:
+    src: "{{ item }}"
+    dest: "{{ connector_dir }}/src/{{ item | basename | regex_replace('.j2$', '') }}"
+    owner: ubuntu
+    group: ubuntu
+  with_fileglob:
+    - "{{ connector_src }}/src/*.j2"
+

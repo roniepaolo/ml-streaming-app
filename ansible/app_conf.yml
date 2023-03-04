@@ -1,0 +1,16 @@
+- hosts: app
+  become: yes
+  vars:
+    manage_lvm: true
+    apps_dir: "/opt"
+    data_dir: "/data"
+  vars_files:
+    - lvm_vars.yml
+    - back_vars.yml
+    - front_vars.yml
+  roles:
+    #- init
+    #- mrlesmithjr.manage-lvm
+    #- geerlingguy.docker
+    - back
+    - front

@@ -1,0 +1,16 @@
+- name: Create a directory if it does not exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: ubuntu
+    group: ubuntu
+  loop:
+    - "{{ bento_dir }}"
+
+- name: Push bento development
+  copy:
+    src: "{{ bento_src }}/"
+    dest: "{{ bento_dir }}/"
+    owner: ubuntu
+    group: ubuntu
+

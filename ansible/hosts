@@ -1,2 +1,22 @@
+[brokers]
+gen1 hostname=gen1 node_id=1
+gen2 hostname=gen2 node_id=2
+gen3 hostname=gen3 node_id=3
+
+[schema_registry]
+spc1 hostname=spc1
+
+[producer]
+spc1 hostname=spc1
+
+[consumer]
+spc2 hostname=spc2
+
+[bento]
+spc1 hostname=spc1
+
 [postgres]
+spc2 hostname=spc2
+
+[app]
 spc2 hostname=spc2

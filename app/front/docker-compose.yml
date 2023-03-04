@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  back:
+    image: 'roniepaolo/front:18.14.2'
+    build:
+      context: .
+      dockerfile: ./img-build/Dockerfile
+      args:
+        NODE_VERSION: '18.14.2'
+        ALPINE_VERSION: '3.17'
+    ports:
+      - 4001:3000

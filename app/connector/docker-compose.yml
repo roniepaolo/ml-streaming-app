@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  connector:
+    image: 'roniepaolo/connector:1.0'
+    build:
+      context: .
+      dockerfile: ./img-build/Dockerfile
+      args:
+        PYTHON_VERSION: '3.9.16'
+        ALPINE_VERSION: '3.17'
+

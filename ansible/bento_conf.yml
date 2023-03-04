@@ -1,0 +1,14 @@
+- hosts: bento
+  become: yes
+  vars:
+    manage_lvm: true
+    apps_dir: "/opt"
+    data_dir: "/data"
+  vars_files:
+    - lvm_vars.yml
+    - bento_vars.yml
+  roles:
+    #- init
+    #- mrlesmithjr.manage-lvm
+    #- geerlingguy.docker
+    - bento

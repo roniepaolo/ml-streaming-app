@@ -1,0 +1,18 @@
+- name: Create a directory if it does not exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: ubuntu
+    group: ubuntu
+  loop:
+    - "{{ jobs_dir }}"
+
+- name: Push connector files (templates)
+  template:
+    src: "{{ item }}"
+    dest: "{{ jobs_dir }}/{{ item | basename | regex_replace('.j2$', '') }}"
+    owner: ubuntu
+    group: ubuntu
+  with_fileglob:
+    - "{{ jobs_src }}/*.j2"
+

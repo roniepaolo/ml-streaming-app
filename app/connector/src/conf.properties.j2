@@ -1,0 +1,17 @@
+[BENTO]
+endpoint=http://{{ bento }}:3000/v2/models/churn
+
+[TOPIC]
+source.topic.name=bank.ods.churn
+sink.topic.name=bank.ods.churn_predictions
+
+[SCHEMA_REGISTRY]
+url=http://{{ schema_registry }}:8081
+
+[CONSUMER]
+bootstrap.servers={{ kafka_servers }}
+group.id=100
+auto.offset.reset=earliest
+
+[PRODUCER]
+bootstrap.servers={{ kafka_servers }}

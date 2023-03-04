@@ -1,0 +1,22 @@
+{
+  "name": "pg-source-bank",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "tasks.max": "1",
+    "plugin.name": "pgoutput",
+    "database.hostname": "${file:/secrets/postgres.properties:hostname}",
+    "database.port": "${file:/secrets/postgres.properties:port}",
+    "database.user": "${file:/secrets/postgres.properties:user}",
+    "database.password": "${file:/secrets/postgres.properties:password}",
+    "database.sslmode": "require",
+    "database.dbname" : "bank",
+	  "topic.prefix": "bank",
+    "table.include.list": "ods.churn",
+    "decimal.handling.mode": "double",
+	  "schema.name.adjustment.mode": "avro",
+    "database.history.kafka.bootstrap.servers": "{{ kafka_servers }}",
+    "database.history.kafka.topic": "dbhistory.bank",
+    "topic.creation.default.replication.factor": 3,
+    "topic.creation.default.partitions": 1
+  }
+}
