@@ -6,14 +6,17 @@
     manage_lvm: true
     apps_dir: "/opt"
     data_dir: "/data"
+    docker_data_dir: "/data/docker"
     kafka_servers: "{{ groups['brokers']
       | map('extract', hostvars, ['ansible_default_ipv4', 'address'])
       | join(':9092,') }}:9092"
+    docker_daemon_options:
+      data-root: '/data/docker'
   vars_files:
     - lvm_vars.yml
     - connect_jobs_vars.yml
   roles:
-    #- init
-    #- mrlesmithjr.manage-lvm
-    #- geerlingguy.docker
+    - init
+    - mrlesmithjr.manage-lvm
+    - geerlingguy.docker
     - connect-jobs

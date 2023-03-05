@@ -15,10 +15,8 @@ RUN set -eux; \
         --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community; \
     pip install --no-cache-dir -r requirements.txt;
 
-COPY ./src/*.py ${PYTHON_APP_DIR}/
-COPY ./img-build/docker-entrypoint.sh /
+COPY ./src/* ${PYTHON_APP_DIR}/
 
 WORKDIR ${PYTHON_APP_DIR}
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["python3", "main.py"]

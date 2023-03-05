@@ -4,11 +4,14 @@
     manage_lvm: true
     apps_dir: "/opt"
     data_dir: "/data"
+    docker_data_dir: "/data/docker"
+    docker_daemon_options:
+      data-root: '/data/docker'
   vars_files:
     - lvm_vars.yml
     - bento_vars.yml
   roles:
-    #- init
-    #- mrlesmithjr.manage-lvm
-    #- geerlingguy.docker
+    - init
+    - mrlesmithjr.manage-lvm
+    - geerlingguy.docker
     - bento

@@ -29,7 +29,7 @@
 - name: Push docker files
   copy:
     src: "{{ connector_src }}/img-build"
-    dest: "{{ connector_dir }}/img-build"
+    dest: "{{ connector_dir }}/"
     owner: ubuntu
     group: ubuntu
 

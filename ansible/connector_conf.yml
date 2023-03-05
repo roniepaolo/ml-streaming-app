@@ -6,6 +6,7 @@
     manage_lvm: true
     apps_dir: "/opt"
     data_dir: "/data"
+    docker_data_dir: "/data/docker"
     bento: "{{ groups['bento']
     | map('extract', hostvars, ['ansible_default_ipv4', 'address'])
     | join(',') }}"
@@ -15,11 +16,13 @@
     kafka_servers: "{{ groups['brokers']
     | map('extract', hostvars, ['ansible_default_ipv4', 'address'])
     | join(':9092,') }}:9092"
+    docker_daemon_options:
+      data-root: '/data/docker'
   vars_files:
     - lvm_vars.yml
     - connector_vars.yml
   roles:
-    #- init
-    #- mrlesmithjr.manage-lvm
-    #- geerlingguy.docker
+    - init
+    - mrlesmithjr.manage-lvm
+    - geerlingguy.docker
     - connector

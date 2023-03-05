@@ -15,11 +15,10 @@ import {
 import { DataGrid } from '@mui/x-data-grid';
 
 export default function CustomerList() {
-
     const [customers, setCustomers] = useState([])
 
     const loadCustomers = async () => {
-        const response = await fetch('http://localhost:4000/customers')
+        const response = await fetch('http://' + process.env.REACT_APP_BACK + '/customers')
         const data = await response.json()
         setCustomers(data)
     }
@@ -107,7 +106,7 @@ export default function CustomerList() {
             "geography_spain": itemGeography_spain,
             "gender_male": itemGender_male
         }
-        await fetch('http://localhost:4000/customers', {
+        await fetch('http://' + process.env.REACT_APP_BACK + '/customers', {
             method: 'POST',
             body: JSON.stringify(post_body),
             headers: {'Content-Type': 'application/json'}
