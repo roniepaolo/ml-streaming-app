@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  server:
+    image: 'roniepaolo/back:18.14.2'
+    build:
+      context: .
+      dockerfile: ./back/img-build/Dockerfile
+      args:
+        NODE_VERSION: '18.14.2'
+        ALPINE_VERSION: '3.17'
+    volumes:
+      - ./back/.env:/app/.env
+    ports:
+      - 8080:80
+  frontend:
+    image: 'roniepaolo/front:18.14.2'
+    build:
+      context: .
+      dockerfile: ./front/img-build/Dockerfile
+    volumes:
+      - ./front/build:/var/www/html
+      - ./deploy/default.conf:/etc/nginx/sites-available/default
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - server
