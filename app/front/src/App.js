@@ -1,17 +1,31 @@
-import CustomerList from "./components/CustomerList";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Container } from "@mui/material";
+import React from 'react';
+import { Navbar } from './components';
+import { Header, Description, Demo, Footer } from './containers';
+import { ThemeProvider, createTheme } from '@mui/material/styles'
+import './App.css'
 
-function App() {
+const theme = createTheme({
+  typography: {
+    allVariants: {
+      fontFamily: 'Manrope'
+    },
+  },
+});
+
+const App = () => {
   return (
-      <BrowserRouter>
-        <Container>
-          <Routes>
-            <Route index path="/" element={<CustomerList />} />
-          </Routes>
-        </Container>
-      </BrowserRouter>
-  );
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <div className="gradient__bg">
+          <Navbar />
+          <Header />
+        </div>
+        <Description />
+        <Demo />
+        <Footer />
+      </div>
+    </ThemeProvider>
+  )
 }
 
 export default App;
