@@ -5,12 +5,12 @@
     owner: ubuntu
     group: ubuntu
   loop:
-    - "{{ back_dir }}"
+    - "{{ full_stack_dir }}"
 
-- name: Push back development
+- name: Push full_stack development
   copy:
-    src: "{{ back_src }}/"
-    dest: "{{ back_dir }}/"
+    src: "{{ full_stack_src }}/"
+    dest: "{{ full_stack_dir }}/"
     owner: ubuntu
     group: ubuntu
 

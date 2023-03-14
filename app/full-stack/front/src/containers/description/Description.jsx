@@ -19,7 +19,7 @@ const Description = () => (
       <Feature title="Kafka" text="Data streaming is managed and stored in a Kafka (KRaft) cluster of 3 brokers for high reliability" />
       <Feature title="Debezium" text="Allows the connection between multiple data bases and Kafka for Change Data Capture (CDC)" />
       <Feature title="Schema Registry" text="It is used to store AVRO data schemas of topics. AVRO serialization was used for high performance and efficient storage" />
-      <Feature title="BentoML" text="It is the faster way to server a ML model to production and it is integrated with the MLOps ecosystem. FastAPI is a thing of the past" />
+      <Feature title="BentoML" text="It is the faster way to server a ML model to production and it is integrated with the MLOps ecosystem" />
       <Feature title="Python, Bash and YAML" text="All the scripts and configuration files were coded using Python, Bash and YAML languages" />
     </div>
   </div>

@@ -5,6 +5,6 @@ const router = Router()
 
 router.get('/customers', getAllCustomers)
 
-router.post('/customers', insertCustomer)
+router.post('/churn', insertCustomer)
 
 module.exports = router;

@@ -31,7 +31,7 @@ const Demo = () => {
   const [loading, setLoading] = useState(false)
 
   const loadCustomers = async () => {
-    const response = await fetch('/customers')
+    const response = await fetch('/api/customers')
     const data = await response.json()
     setCustomers(data)
   }
@@ -100,7 +100,7 @@ const Demo = () => {
       "geography_spain": itemGeography_spain,
       "gender_male": itemGender_male
     }
-    await fetch('/customers', {
+    await fetch('/api/churn', {
       method: 'POST',
       body: JSON.stringify(post_body),
       headers: {'Content-Type': 'application/json'}

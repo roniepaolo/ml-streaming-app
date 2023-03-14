@@ -9,11 +9,9 @@
       data-root: '/data/docker'
   vars_files:
     - lvm_vars.yml
-    - back_vars.yml
-    - front_vars.yml
+    - full_stack_vars.yml
   roles:
     - init
     - mrlesmithjr.manage-lvm
     - geerlingguy.docker
-    - back
-    - front
+    - full-stack
