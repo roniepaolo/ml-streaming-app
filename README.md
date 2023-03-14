@@ -4,6 +4,7 @@
 A Machine Learning streaming pipeline with a user interface developed in an open source environment such as Kafka (KRaft mode), Debezium, Postgres and BentoML. This project is living in AWS EC2 instances, using Terraform,  Ansible and Docker, so its deployment and replication capacity is straighforward. 
 ## Features
 
+- Full-stack app in NodeJS and React with a NGINX server
 - Kafka platform in KRaft Mode
 - Kafka Connect and Avro Schema Registry
 - Terraform, Ansible and Docker
