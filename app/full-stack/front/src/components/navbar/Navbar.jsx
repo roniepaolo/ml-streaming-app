@@ -32,7 +32,7 @@ const Navbar = () => {
               <p><a href="#howdoesitwork">How does it work?</a></p>
             </div>
             <div className="churn__navbar-menu_container-links-demo">
-              <button type="button">Demo</button>
+              <p><a href="#demo">Demo</a></p>
             </div>
           </div>
         )}

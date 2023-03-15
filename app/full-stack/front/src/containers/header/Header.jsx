@@ -9,7 +9,7 @@ const Header = () => (
       <p>This pipeline was developed using Kafka KRaft, Terraform, Ansible and Docker as core tools, with an IaaS approach in AWS</p>
     </div>
     <div className="churn__header-image">
-      <img src={pipeline} />
+      <img src={pipeline} alt="Machine Learning streaming pipeline" />
     </div>
   </div>
 );

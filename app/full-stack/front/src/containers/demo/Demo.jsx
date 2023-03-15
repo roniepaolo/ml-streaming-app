@@ -78,27 +78,28 @@ const Demo = () => {
     const testEstimatedsalary = itemEstimatedsalary >= 0 && itemEstimatedsalary <= 200000
     const testGeography_germany = parseInt(itemGeography_germany) === 1 || parseInt(itemGeography_germany) === 0
     const testGeography_spain = parseInt(itemGeography_spain) === 1 || parseInt(itemGeography_spain) === 0
+    const testGeogrpahy_both = parseInt(itemGeography_germany) === 1 && parseInt(itemGeography_spain) === 1
     const testGender_male = parseInt(itemGender_male) === 1 || parseInt(itemGender_male) === 0
     const testBody = testCreditscore && testAge && testTenure && testBalance && testNumofproducts &&
       testHascrcard && testIsactivemember && testEstimatedsalary && testGeography_germany &&
-      testGeography_spain && testGender_male
+      testGeography_spain && !testGeogrpahy_both && testGender_male
     if (!testBody) {
       return
     }
 
     setLoading(true)
     const post_body = {
-      "creditscore": itemCreditscore,
-      "age": itemAge,
-      "tenure": itemTenure,
+      "creditscore": parseInt(itemCreditscore),
+      "age": parseInt(itemAge),
+      "tenure": parseInt(itemTenure),
       "balance": itemBalance,
-      "numofproducts": itemNumofproducts,
-      "hascrcard": itemHascrcard,
-      "isactivemember": itemIsactivemember,
+      "numofproducts": parseInt(itemNumofproducts),
+      "hascrcard": parseInt(itemHascrcard),
+      "isactivemember": parseInt(itemIsactivemember),
       "estimatedsalary": itemEstimatedsalary,
-      "geography_germany": itemGeography_germany,
-      "geography_spain": itemGeography_spain,
-      "gender_male": itemGender_male
+      "geography_germany": parseInt(itemGeography_germany),
+      "geography_spain": parseInt(itemGeography_spain),
+      "gender_male": parseInt(itemGender_male)
     }
     await fetch('/api/churn', {
       method: 'POST',
@@ -294,7 +295,10 @@ const Demo = () => {
                   onChange={e => {
                     setGeography_germany(e.target.value)
                   }}
-                  error={parseInt(itemGeography_germany) !== 0 && parseInt(itemGeography_germany) !== 1}
+                  error={
+                    (parseInt(itemGeography_germany) !== 0 && parseInt(itemGeography_germany) !== 1) ||
+                    (parseInt(itemGeography_germany) !== 0 && parseInt(itemGeography_spain) === 1)
+                  }
                 />
               </Grid>
               <Grid item xs={5.8}>
@@ -310,7 +314,10 @@ const Demo = () => {
                   onChange={e => {
                     setGeography_spain(e.target.value)
                   }}
-                  error={parseInt(itemGeography_spain) !== 0 && parseInt(itemGeography_spain) !== 1}
+                  error={
+                    (parseInt(itemGeography_spain) !== 0 && parseInt(itemGeography_spain) !== 1) ||
+                    (parseInt(itemGeography_spain) !== 0 && parseInt(itemGeography_germany) === 1)
+                  }
                 />
               </Grid>
               <Grid item xs={5.8}>
