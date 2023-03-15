@@ -1,6 +1,8 @@
 
 # Machine Learning Streaming
 
+<img src="https://raw.githubusercontent.com/roniepaolo/ml-streaming-app/main/app/full-stack/front/src/assets/pipeline.png" alt="drawing" width="1000"/>
+
 A Machine Learning streaming pipeline with a user interface developed in an open source environment such as Kafka (KRaft mode), Debezium, Postgres and BentoML. This project is living in AWS EC2 instances, using Terraform,  Ansible and Docker, so its deployment and replication capacity is straighforward. 
 ## Features
 
