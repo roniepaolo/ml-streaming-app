@@ -89,17 +89,17 @@ const Demo = () => {
 
     setLoading(true)
     const post_body = {
-      "creditscore": parseInt(itemCreditscore),
-      "age": parseInt(itemAge),
-      "tenure": parseInt(itemTenure),
+      "creditscore": itemCreditscore,
+      "age": itemAge,
+      "tenure": itemTenure,
       "balance": itemBalance,
-      "numofproducts": parseInt(itemNumofproducts),
-      "hascrcard": parseInt(itemHascrcard),
-      "isactivemember": parseInt(itemIsactivemember),
+      "numofproducts": itemNumofproducts,
+      "hascrcard": itemHascrcard,
+      "isactivemember": itemIsactivemember,
       "estimatedsalary": itemEstimatedsalary,
-      "geography_germany": parseInt(itemGeography_germany),
-      "geography_spain": parseInt(itemGeography_spain),
-      "gender_male": parseInt(itemGender_male)
+      "geography_germany": itemGeography_germany,
+      "geography_spain": itemGeography_spain,
+      "gender_male": itemGender_male
     }
     await fetch('/api/churn', {
       method: 'POST',
@@ -137,12 +137,17 @@ const Demo = () => {
             rows={rows}
             columns={columns}
             pageSize={10}
-            rowsPerPageOptions={[10]}
             initialState={{
               sorting: {
                 sortModel: [{ field: 'customerid', sort: 'desc' }],
               },
+              pagination: {
+                paginationModel: {
+                  pageSize: 10,
+                }
+              }
             }}
+            pageSizeOptions={[10]}
           />
         </Box>
       </div>
