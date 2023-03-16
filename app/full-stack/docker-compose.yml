@@ -21,6 +21,7 @@ services:
     volumes:
       - ./front/build:/var/www/html
       - ./deploy/default.conf:/etc/nginx/sites-available/default
+      - ./letsencrypt:/etc/letsencrypt
     ports:
       - 80:80
       - 443:443
