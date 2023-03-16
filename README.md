@@ -27,7 +27,7 @@ A Machine Learning streaming pipeline with a user interface developed in an open
 
 Its functionality is proven in the link below.
 
-https://mlstreaming-test.roniepaolo.com/
+https://mls.roniepaolo.com/
 
 
 ## References
