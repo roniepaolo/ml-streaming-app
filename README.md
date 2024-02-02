@@ -23,12 +23,5 @@ A Machine Learning streaming pipeline with a user interface developed in an open
 - [@roniepaolo](https://www.github.com/roniepaolo)
 
 
-## Demo
-
-Its functionality is proven in the link below.
-
-https://mls.roniepaolo.com/
-
-
 ## References
 * [Machine Learning Streaming with Kafka, Debezium and BentoML](https://towardsdatascience.com/machine-learning-streaming-with-kafka-debezium-and-bentoml-c5f3996afe8f)
